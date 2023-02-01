@@ -13,23 +13,39 @@
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
-                @elseif(old('name'))
-                <div class="valid-feedback">
-                    Finalmente un nome valido
-                  </div>
                 @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Descrizione</label>
-                <textarea name="description" cols="30" rows="5" class="form-control w-75 mx-auto"></textarea>
+                <textarea name="description" cols="30" rows="5" class="form-control w-75 mx-auto
+                @error('description') is-invalid @elseif(old('description')) is-valid @enderror">{{old('description')}}</textarea>
+                @error('description')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Link immagine</label>
-                <input type="text" class="form-control text-center w-75 mx-auto" name="cover_img">
+                <input type="text" class="form-control text-center w-75 mx-auto
+                @error('cover_img') is-invalid @elseif(old('cover_img')) is-valid @enderror" 
+                name="cover_img" value="{{old('cover_img')}}">
+                @error('cover_img')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label class="form-label">Link Git-Hub</label>
-                <input type="text" class="form-control text-center w-75 mx-auto" name="git_link">
+                <input type="text" class="form-control text-center w-75 mx-auto
+                @error('git_link') is-invalid @elseif(old('git_link')) is-valid @enderror" 
+                name="git_link" value="{{old('git_link')}}">
+                @error('git_link')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <button class="btn btn-lg btn-outline-dark mt-4" type="submit">Salva Progetto</button>     
         </form>  
