@@ -6,11 +6,17 @@
             @csrf()
             <div class="mb-3">
                 <label class="form-label">Nome Progetto</label>
-                <input type="text" class="form-control text-center w-75 mx-auto" name="name">
+                <input type="text" class="form-control text-center w-75 mx-auto
+                @error('name') is-invalid @elseif(old('name')) is-valid @enderror"
+                name="name" value="{{old('name')}}">
                 @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
+                @elseif(old('name'))
+                <div class="valid-feedback">
+                    Finalmente un nome valido
+                  </div>
                 @enderror
             </div>
             <div class="mb-3">

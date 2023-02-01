@@ -32,10 +32,10 @@ class StoreProjectRequest extends FormRequest
     }
     public function messages() {
         return [
-            "title.required" => "Il titolo è obbligatorio",
-            "title.min" =>  "Il titolo deve avere almeno :min caratteri",
-            "title.max" =>  "Il titolo deve avere massimo :max caratteri",
-            "description.required" => "Il contenuto del post è obbligatorio",
+            "name.required" => "Il nome è obbligatorio",
+            "name.min" =>  "Il nome deve avere almeno :min caratteri",
+            "name.max" =>  "Il nome deve avere massimo :max caratteri",
+            "description.required" => "Il contenuto del progetto è obbligatorio",
             "cover_img.required" => "L'immagine e' richiesta",
             "cover_img.url" => "L'immagine deve essere un URL",
             "git_link.url" => "Il link deve essere un URL",
