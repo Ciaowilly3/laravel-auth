@@ -33,8 +33,9 @@ Route::middleware(['auth', 'verified'])
     ->prefix("admin/projects")
     ->name("admin.projects.")
     ->group(function(){
+        Route::get('/' ,[ProjectController::class, 'index'])->name('index');
         Route::get('create',[ProjectController::class, 'create'])->name('create');
-        Route::post('', [ProjectsController::class, "store"])->name("store");
+        Route::post('/store', [ProjectController::class, 'store'])->name("store");
     });
 
 require __DIR__.'/auth.php';
