@@ -15,7 +15,12 @@
                     @endif
 
                     {{ __('You are logged in!') }}
-
+                    <div class="card-text mt-3 pt-1 d-flex justify-content-between align-items-end border-top">
+                        <p class="fs-5 mb-0">
+                            since you are logged, look for the projects index!
+                        </p>
+                        <button class="ms-auto btn btn-primary"><a href="#">Index</a></button>
+                    </div>
                 </div>
             </div>
         </div>
