@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +60,9 @@ class ProjectController extends Controller
      */
     public function show($id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        return view('admin.projects.show', compact('project'));
     }
 
     /**
@@ -70,7 +73,9 @@ class ProjectController extends Controller
      */
     public function edit($id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -80,9 +85,14 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProjectRequest $request, $id)
     {
-        //
+        $data = $request->validated();
+
+        $project = Project::findOrFail($id);
+        $project->update($data);
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -93,6 +103,10 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
 }
