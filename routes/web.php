@@ -37,8 +37,8 @@ Route::middleware(['auth', 'verified'])
         Route::get('create',[ProjectController::class, 'create'])->name('create');
         Route::post('/store', [ProjectController::class, 'store'])->name("store");
         Route::get('show/{project}', [ProjectController::class, 'show'])->name('show');
-        Route::get('edit/{project', [ProjectController::class, 'edit'])->name('edit');
-
+        Route::get('edit/{project}', [ProjectController::class, 'edit'])->name('edit');
+        Route::put('{project}', [ProjectController::class, 'update'])->name('update');
         Route::delete('/{project}', [ProjectController::class, 'destroy'])->name('destroy');    
     });
 
