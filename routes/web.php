@@ -36,6 +36,10 @@ Route::middleware(['auth', 'verified'])
         Route::get('/' ,[ProjectController::class, 'index'])->name('index');
         Route::get('create',[ProjectController::class, 'create'])->name('create');
         Route::post('/store', [ProjectController::class, 'store'])->name("store");
+        Route::get('show/{project}', [ProjectController::class, 'show'])->name('show');
+        Route::get('edit/{project', [ProjectController::class, 'edit'])->name('edit');
+
+        Route::delete('/{project}', [ProjectController::class, 'destroy'])->name('destroy');    
     });
 
 require __DIR__.'/auth.php';

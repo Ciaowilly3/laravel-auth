@@ -19,7 +19,7 @@
                         <p class="fs-5 mb-0">
                             since you are logged, look for the projects index!
                         </p>
-                        <button class="ms-auto btn btn-primary"><a href="#">Index</a></button>
+                        <button class="ms-auto btn btn-primary"><a class="text-white text-decoration-none" href="{{route('admin.projects.index')}}">Index</a></button>
                     </div>
                 </div>
             </div>
