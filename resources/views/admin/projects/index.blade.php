@@ -31,7 +31,7 @@
                         <td>
                             <button class="btn btn-dark rounded-circle"><a href="{{$project->git_link}}" class="text-white"><i class="fa-brands fa-github"></i></a></button>
                         </td>
-                        <td><img src="{{$project->cover_img}}" alt="" class="w-25 rounded-2"></td>
+                        <td><img src="{{ asset('storage/' . $project->cover_img) }}" alt="" class="w-25 rounded-2"></td>
                         <td class="text-nowrap">
                             <button class="btn btn-success btn-sm me-2">
                                 <a href="{{route('admin.projects.edit', $project->id)}}"><i class="fas fa-pencil text-white"></i></a>

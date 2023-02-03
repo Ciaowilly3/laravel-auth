@@ -24,22 +24,18 @@ class UpdateProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|min:5|max:50',
-            'description' =>'required|string',
-            'cover_img' =>'required|url',
-            'git_link' =>'required|url',
+            'name' => 'min:5|max:50',
+            'description' =>'string',
+            'cover_img' =>'image',
+            'git_link' =>'url',
         ];
     }
     public function messages() {
         return [
-            "name.required" => "Il nome è obbligatorio",
             "name.min" =>  "Il nome deve avere almeno :min caratteri",
             "name.max" =>  "Il nome deve avere massimo :max caratteri",
-            "description.required" => "Il contenuto del progetto è obbligatorio",
-            "cover_img.required" => "L'immagine e' richiesta",
-            "cover_img.url" => "L'immagine deve essere un URL",
+            "cover_img.image" => "L'immagine deve essere caricata",
             "git_link.url" => "Il link deve essere un URL",
-            "git_link.required" => "Il link deve esserci",
         ];
     }
 }

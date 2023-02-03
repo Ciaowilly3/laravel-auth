@@ -26,7 +26,7 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => 'required|min:5|max:50',
             'description' =>'required|string',
-            'cover_img' =>'required|url',
+            'cover_img' =>'required|image',
             'git_link' =>'required|url',
         ];
     }
@@ -37,7 +37,7 @@ class StoreProjectRequest extends FormRequest
             "name.max" =>  "Il nome deve avere massimo :max caratteri",
             "description.required" => "Il contenuto del progetto è obbligatorio",
             "cover_img.required" => "L'immagine e' richiesta",
-            "cover_img.url" => "L'immagine deve essere un URL",
+            "cover_img.image" => "L'immagine deve essere un URL",
             "git_link.url" => "Il link deve essere un URL",
             "git_link.required" => "Il link deve esserci",
         ];

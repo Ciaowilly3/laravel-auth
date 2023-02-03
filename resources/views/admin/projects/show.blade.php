@@ -5,7 +5,7 @@
         <div class="card mb-3">
             <div class="d-flex g-0">
                 <div class="flex-grow-1">
-                    <img src="{{$project->cover_img}}" class="img-fluid rounded-start" alt="...">
+                    <img src="{{ asset('storage/' . $project->cover_img) }}" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="flex-grow-1">
                     <div class="card-body">

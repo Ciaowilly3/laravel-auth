@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="text-center bg-white rounded-3 py-5">
-        <form action="{{route ('admin.projects.store')}}" class="form-group w-75 d-inline-block shadow rounded-3 p-3 py-5" method="POST">
+        <form action="{{route ('admin.projects.store')}}" class="form-group w-75 d-inline-block shadow rounded-3 p-3 py-5"
+         method="POST" enctype="multipart/form-data">
             @csrf()
             <div class="mb-3">
                 <label class="form-label">Nome Progetto</label>
@@ -26,10 +27,10 @@
                 @enderror
             </div>
             <div class="mb-3">
-                <label class="form-label">Link immagine</label>
-                <input type="text" class="form-control text-center w-75 mx-auto
+                <label class="form-label">Carica l'immagine del progetto</label>
+                <input type="file" class="form-control text-center w-75 mx-auto
                 @error('cover_img') is-invalid @elseif(old('cover_img')) is-valid @enderror" 
-                name="cover_img" value="{{old('cover_img')}}">
+                name="cover_img">
                 @error('cover_img')
                     <div class="invalid-feedback">
                         {{ $message }}

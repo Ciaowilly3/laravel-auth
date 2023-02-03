@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -41,13 +42,11 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        // $data = $request->validated();
-
-        // $project = Project::create($data);
-
         $data = $request->validated();
+        $path = Storage::put('covers', $data['cover_img']);
         $newProject = new Project();
         $newProject->fill($data);
+        $newProject->cover_img = $path;
         $newProject->save();
         return redirect()->route('admin.projects.index');
     }
@@ -88,9 +87,14 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, $id)
     {
         $data = $request->validated();
-
         $project = Project::findOrFail($id);
+        
+        if(key_exists('cover_img', $data)){
+            $path= Storage::put('covers', $data['cover_img']);
+            Storage::delete($project->cover_img);
+        }
         $project->update($data);
+        $project->cover_img = $path;
 
         return redirect()->route('admin.projects.index');
     }
@@ -104,6 +108,10 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         $project = Project::findOrFail($id);
+
+        if ($project->cover_img) {
+            Storage::delete($project->cover_img);
+        }
 
         $project->delete();
 
