@@ -93,8 +93,8 @@ class ProjectController extends Controller
             $path= Storage::put('covers', $data['cover_img']);
             Storage::delete($project->cover_img);
         }
+        $data['cover_img'] = $path;
         $project->update($data);
-        $project->cover_img = $path;
 
         return redirect()->route('admin.projects.index');
     }
